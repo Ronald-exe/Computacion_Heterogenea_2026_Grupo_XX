@@ -1,4 +1,4 @@
-# Computación Heterogénea 2026 — Grupo 2
+# Computación Heterogénea 2026 — Grupo XX
 
 ## Profesor
 
