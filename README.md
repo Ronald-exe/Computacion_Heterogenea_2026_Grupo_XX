@@ -1,4 +1,4 @@
-# Computación Heterogénea 2026 — Grupo XX
+# Computación Heterogénea 2026 — Grupo 1
 
 ## Profesor
 
@@ -10,10 +10,10 @@
 
 | Nombre | Carnet | Rol |
 |---|---|---|
-| Ronald Duarte Barrantes | 2021004089 |  |
-| Integrante | Carnet |  |
-| Integrante | Carnet |  |
-| Integrante | Carnet |  |
+| Ronald Duarte Barrantes | 2021004089 | Líder de equipo |
+| Khaterine Salazar Martinez | 2014160591 | Desarrollador |
+| Fabian Chacon Solano | 2018135154 | Desarrollador |
+| Keylor Muñoz Soto. | 2020100689| Revisor |
 
 ---
 
