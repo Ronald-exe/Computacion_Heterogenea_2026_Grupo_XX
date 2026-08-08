@@ -8,7 +8,7 @@
 
 ## Integrantes
 
-| Nombre | Carnet | Carnet |
+| Nombre | Carnet | Rol |
 |---|---|---|
 | Ronald Duarte Barrantes | 2021004089 |  |
 | Integrante | Carnet |  |
