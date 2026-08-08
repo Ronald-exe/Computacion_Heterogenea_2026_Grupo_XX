@@ -27,10 +27,11 @@ Primeramente, quiero dejar algunos aspectos operativos relevantes para que la co
 - **Sinceridad:** sabemos que la universidad es una etapa intensa de estudio y que el aprendizaje consume mucho tiempo. Si en algún momento se ven sobrepasados por la carga, por favor comuníquenlo y tomaremos estrategias para aliviarla, trabajando de buena manera y sin atrasarnos. No habrá ninguna represalia por decir que no se ha podido avanzar, pero es importante avisar con tiempo para poder tomar medidas y ayudar en la medida de lo posible.
 
 **Discord:** https://discord.gg/DNHzqZwXW
----
+
 **One drive:** https://drive.google.com/drive/folders/14f0yPmSh8cU7nY3NXeMSStrlX9_5XDJZ?usp=drive_link
----
+
 **OneNote:** https://estudianteccr-my.sharepoint.com/:o:/g/personal/ronald_estudiantec_cr/IgDYnr9V-MBSRYWkfc2jtYx-AWyIvp3Ch7zAGOlElKLD3DM?e=ibEaI5
+
 ---
 
 ## Disponibilidad de horario para los Sync
