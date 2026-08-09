@@ -209,7 +209,7 @@ Archivo central de referencia del proyecto. Debe incluir:
  
 Guía paso a paso para instalar y configurar Python UV. Cubre los requisitos previos, el proceso de instalación y cualquier configuración adicional necesaria para ejecutar el proyecto sin problemas.
 
-**Guia_UV:** https://github.com/Ronald-exe/Computacion_Heterogenea_2026_Grupo_XX/blob/main/Laboratorios/lab1_cal_matrix/calculadora-matrices/docs/guia_uv.md
+**Guia_UV:** https://github.com/Ronald-exe/Computacion_Heterogenea_2026_Grupo_XX/blob/main/Laboratorios/lab1_cal_matriz/calculadora-matrices/docs/guia_uv.md
 
 ---
 ## 9. Convenciones de Código
