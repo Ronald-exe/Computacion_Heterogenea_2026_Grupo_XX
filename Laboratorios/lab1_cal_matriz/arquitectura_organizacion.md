@@ -15,21 +15,6 @@ Este documento describe la estrategia de organización del proyecto y sirve como
 | **Python UV** | Gestión de entorno virtual y dependencias |
 | **Typer** | Framework CLI para definir comandos de usuario |
 | **Git / GitHub** | Control de versiones y colaboración |
-
-### Instalación del entorno (Linux)
-
-```bash
-# 1. Instalar UV
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# 2. Crear el proyecto e instalar dependencias
-uv init calculadora-matrices
-cd calculadora-matrices
-uv add typer
-```
-
-> Cada integrante debe tener el entorno funcional antes de comenzar a contribuir código.
-
 ---
 
 ## 3. Estructura de Carpetas
@@ -93,7 +78,7 @@ Todas las operaciones concretas heredan de esta clase.
 | `inversa_matriz.py` | `inversa_matriz()` | Cálculo de la matriz inversa |
 | `determinante_matriz.py` | `determinante_matriz()` | Cálculo del determinante escalar |
 
-### 4.3 Registro de operaciones — `diccionario_app_matriz.py`
+### 4.3 Registro de operaciones — `calculadora.py`
 
 Contiene la clase `Aplicación`, que almacena en un diccionario las operaciones soportadas. Esto permite agregar o retirar operaciones sin modificar el flujo principal.
 
@@ -182,7 +167,7 @@ La aplicación expone los siguientes comandos. Se espera que la interacción sea
 | `multiplicar` | Multiplica las dos matrices cargadas |
 | `inversa` | Calcula la inversa de la matriz seleccionada |
 | `determinante` | Calcula el determinante de la matriz seleccionada |
-| `diccionario` | Muestra las operaciones soportadas por la aplicación |
+| `calculadora` | Muestra las operaciones soportadas por la aplicación |
 
 Cada comando debe indicar claramente qué matrices utiliza y presentar el resultado en un formato legible.
 
