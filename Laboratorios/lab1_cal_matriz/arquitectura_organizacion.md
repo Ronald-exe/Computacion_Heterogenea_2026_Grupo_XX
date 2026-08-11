@@ -50,7 +50,8 @@ Github/
             │   ├── multiplicacion_matriz.py
             │   ├── inversa_matriz.py
             │   ├── determinante_matriz.py
-            │   └── diccionario_app_matriz.py
+            │   ├── json_carga.py
+            │   └── calculadora.py
             ├── data/
             │   └── matrices.json
             ├── test/
@@ -126,8 +127,7 @@ La aplicación implementa el patrón **Interfaz-Adaptador** de la siguiente mane
                     ▼
          ┌──────────────────────┐
          │   Aplicación         │  ← Adaptador
-         │  (diccionario de     │
-         │   operaciones)       │
+         │  (calculadora.py)    │
          └──────────┬───────────┘
                     │
                     ▼
@@ -147,13 +147,14 @@ La aplicación implementa el patrón **Interfaz-Adaptador** de la siguiente mane
 
 ```
 main_matriz.py
-  ├── diccionario_app_matriz.py (Aplicación)
+  ├── Calculadora.py (Aplicación)
   │     ├── suma_matriz.py
   │     ├── multiplicacion_matriz.py
   │     ├── inversa_matriz.py
   │     └── determinante_matriz.py
   │           └── operacion_matriz.py (clase padre)
   ├── matrices.json (datos de entrada)
+  ├── json_carga.py
   └── Typer (librería CLI)
 ```
 
@@ -164,7 +165,7 @@ La dependencia fluye de arriba hacia abajo: `main` conoce a `Aplicación`, `Apli
 1. Definir el esquema de `matrices.json` con datos de prueba.
 2. Implementar `operacion_matriz.py` (clase abstracta).
 3. Implementar las operaciones concretas (suma, multiplicación, inversa, determinante).
-4. Implementar `diccionario_app_matriz.py` para registrar las operaciones.
+4. Implementar `calculadora.py` para registrar las operaciones.
 5. Implementar `main_matriz.py` con los comandos de Typer.
 6. Escribir pruebas unitarias y de casos esquina.
 7. Revisión final e integración.
