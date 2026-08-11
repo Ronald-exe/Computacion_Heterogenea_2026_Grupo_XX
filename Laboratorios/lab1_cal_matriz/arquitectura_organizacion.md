@@ -96,29 +96,39 @@ Archivo JSON que almacena las dos matrices sobre las que se operará. Cada matri
 
 La aplicación implementa el patrón **Interfaz-Adaptador** de la siguiente manera:
 
-```
-         ┌──────────────────────┐
-         │   Operación (ABC)    │  ← Interfaz
-         │  SetMatrix / Compute │
-         │       / Clear        │
-         └──────────┬───────────┘
-                    │ hereda
-       ┌────────────┼────────────┬──────────────┐
-       ▼            ▼            ▼              ▼
-   ┌────────┐  ┌──────────┐  ┌─────────┐  ┌──────────────┐
-   │  Suma  │  │  Mult.   │  │ Inversa │  │ Determinante │
-   └────────┘  └──────────┘  └─────────┘  └──────────────┘
-                    │
-                    ▼
-         ┌──────────────────────┐
-         │   Aplicación         │  ← Adaptador
-         │  (calculadora.py)    │
-         └──────────┬───────────┘
-                    │
-                    ▼
-         ┌──────────────────────┐
-         │   Typer CLI          │  ← Interfaz de usuario
-         └──────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Fase_interfaz["Fase de interfaz"]
+        subgraph Tipos_de_entrada["Tipos de entrada"]
+            direction TD
+            A[Matrices JSON] --> B[JSON carga]
+        end
+
+        C[Typer CLI] --> D[Main]
+        Tipos_de_entrada --> D
+    end
+
+    subgraph Fase_adaptadora["Fase adaptadora"]
+        E[Calculadora]
+
+        subgraph Modo_calculadora["Modo calculadora"]
+            direction LR
+            F[Suma]
+            G[Multiplicación]
+            H[Inversa]
+            I[Determinante]
+        end
+
+        J["Operaciones<br/><i>Clase padre</i>"]
+    end
+
+    %% Conexiones entre la fase adaptadora y la interfaz
+    Modo_calculadora --> E
+    E --> D
+    J --> F
+    J --> G
+    J --> H
+    J --> I
 ```
 
 - **Interfaz:** la clase abstracta `Operación` define el contrato que toda operación debe cumplir.
