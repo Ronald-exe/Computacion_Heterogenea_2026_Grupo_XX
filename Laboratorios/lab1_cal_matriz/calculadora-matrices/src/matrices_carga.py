@@ -1,5 +1,5 @@
 import numpy as np
-from json_carga import cargar_json
+from src.json_carga import cargar_json
 
 def carga_matrices():
     """Carga las matrices desde un archivo JSON y las convierte en arrays de NumPy."""
