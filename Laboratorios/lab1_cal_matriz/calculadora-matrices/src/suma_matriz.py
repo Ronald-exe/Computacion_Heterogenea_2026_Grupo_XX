@@ -3,10 +3,10 @@
 from operacion_matriz import Operacion
 
 
-class SumaMatriz(Operacion):
+class suma_matriz(Operacion):
     """Operación de suma de matrices."""
 
-    def compute(self):
+    def Compute(self):
         """Suma dos matrices si tienen las mismas dimensiones.
 
         Returns:
