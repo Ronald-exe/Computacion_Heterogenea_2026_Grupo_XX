@@ -15,21 +15,6 @@ Este documento describe la estrategia de organización del proyecto y sirve como
 | **Python UV** | Gestión de entorno virtual y dependencias |
 | **Typer** | Framework CLI para definir comandos de usuario |
 | **Git / GitHub** | Control de versiones y colaboración |
-
-### Instalación del entorno (Linux)
-
-```bash
-# 1. Instalar UV
-curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# 2. Crear el proyecto e instalar dependencias
-uv init calculadora-matrices
-cd calculadora-matrices
-uv add typer
-```
-
-> Cada integrante debe tener el entorno funcional antes de comenzar a contribuir código.
-
 ---
 
 ## 3. Estructura de Carpetas
@@ -50,7 +35,8 @@ Github/
             │   ├── multiplicacion_matriz.py
             │   ├── inversa_matriz.py
             │   ├── determinante_matriz.py
-            │   └── diccionario_app_matriz.py
+            │   ├── json_carga.py
+            │   └── calculadora.py
             ├── data/
             │   └── matrices.json
             ├── test/
@@ -92,7 +78,7 @@ Todas las operaciones concretas heredan de esta clase.
 | `inversa_matriz.py` | `inversa_matriz()` | Cálculo de la matriz inversa |
 | `determinante_matriz.py` | `determinante_matriz()` | Cálculo del determinante escalar |
 
-### 4.3 Registro de operaciones — `diccionario_app_matriz.py`
+### 4.3 Registro de operaciones — `calculadora.py`
 
 Contiene la clase `Aplicación`, que almacena en un diccionario las operaciones soportadas. Esto permite agregar o retirar operaciones sin modificar el flujo principal.
 
@@ -110,30 +96,39 @@ Archivo JSON que almacena las dos matrices sobre las que se operará. Cada matri
 
 La aplicación implementa el patrón **Interfaz-Adaptador** de la siguiente manera:
 
-```
-         ┌──────────────────────┐
-         │   Operación (ABC)    │  ← Interfaz
-         │  SetMatrix / Compute │
-         │       / Clear        │
-         └──────────┬───────────┘
-                    │ hereda
-       ┌────────────┼────────────┬──────────────┐
-       ▼            ▼            ▼              ▼
-   ┌────────┐  ┌──────────┐  ┌─────────┐  ┌──────────────┐
-   │  Suma  │  │  Mult.   │  │ Inversa │  │ Determinante │
-   └────────┘  └──────────┘  └─────────┘  └──────────────┘
-                    │
-                    ▼
-         ┌──────────────────────┐
-         │   Aplicación         │  ← Adaptador
-         │  (diccionario de     │
-         │   operaciones)       │
-         └──────────┬───────────┘
-                    │
-                    ▼
-         ┌──────────────────────┐
-         │   Typer CLI          │  ← Interfaz de usuario
-         └──────────────────────┘
+```mermaid
+flowchart TD
+    subgraph Fase_interfaz["Fase de interfaz"]
+        subgraph Tipos_de_entrada["Tipos de entrada"]
+            direction TD
+            A[Matrices JSON] --> B[JSON carga]
+        end
+
+        C[Typer CLI] --> D[Main]
+        Tipos_de_entrada --> D
+    end
+
+    subgraph Fase_adaptadora["Fase adaptadora"]
+        E[Calculadora]
+
+        subgraph Modo_calculadora["Modo calculadora"]
+            direction LR
+            F[Suma]
+            G[Multiplicación]
+            H[Inversa]
+            I[Determinante]
+        end
+
+        J["Operaciones<br/><i>Clase padre</i>"]
+    end
+
+    %% Conexiones entre la fase adaptadora y la interfaz
+    Modo_calculadora --> E
+    E --> D
+    J --> F
+    J --> G
+    J --> H
+    J --> I
 ```
 
 - **Interfaz:** la clase abstracta `Operación` define el contrato que toda operación debe cumplir.
@@ -147,13 +142,14 @@ La aplicación implementa el patrón **Interfaz-Adaptador** de la siguiente mane
 
 ```
 main_matriz.py
-  ├── diccionario_app_matriz.py (Aplicación)
+  ├── Calculadora.py (Aplicación)
   │     ├── suma_matriz.py
   │     ├── multiplicacion_matriz.py
   │     ├── inversa_matriz.py
   │     └── determinante_matriz.py
   │           └── operacion_matriz.py (clase padre)
   ├── matrices.json (datos de entrada)
+  ├── json_carga.py
   └── Typer (librería CLI)
 ```
 
@@ -164,7 +160,7 @@ La dependencia fluye de arriba hacia abajo: `main` conoce a `Aplicación`, `Apli
 1. Definir el esquema de `matrices.json` con datos de prueba.
 2. Implementar `operacion_matriz.py` (clase abstracta).
 3. Implementar las operaciones concretas (suma, multiplicación, inversa, determinante).
-4. Implementar `diccionario_app_matriz.py` para registrar las operaciones.
+4. Implementar `calculadora.py` para registrar las operaciones.
 5. Implementar `main_matriz.py` con los comandos de Typer.
 6. Escribir pruebas unitarias y de casos esquina.
 7. Revisión final e integración.
@@ -181,7 +177,7 @@ La aplicación expone los siguientes comandos. Se espera que la interacción sea
 | `multiplicar` | Multiplica las dos matrices cargadas |
 | `inversa` | Calcula la inversa de la matriz seleccionada |
 | `determinante` | Calcula el determinante de la matriz seleccionada |
-| `diccionario` | Muestra las operaciones soportadas por la aplicación |
+| `calculadora` | Muestra las operaciones soportadas por la aplicación |
 
 Cada comando debe indicar claramente qué matrices utiliza y presentar el resultado en un formato legible.
 
