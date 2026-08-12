@@ -11,11 +11,20 @@ class determinante_matriz(Operacion):
         """
         Calcula el determinante de la matriz.
         """
-        # Verificar si la matriz es cuadrada
-        if self.matriz.shape[0] != self.matriz.shape[1]:
-            return "La matriz debe ser cuadrada para calcular su determinante."
+        result_det = {}
 
-        # Calcular el determinante de la matriz
-        determinante = np.linalg.det(self.matriz)
-        return determinante
+        # Recorrer cada matriz en el diccionario de matrices
+        for index, matrix in self.matrices.items():
+            
+            matrix = np.asarray(matrix)
+
+            # Verificar si la matriz es cuadrada
+            if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
+                result_det[index] = (f"La matriz {index} debe ser cuadrada para calcular su determinante.")
+                continue
+
+            # Calcular el determinante de la matriz
+            result_det[index] = round(np.linalg.det(matrix), 10)
+        
+        return result_det
             
