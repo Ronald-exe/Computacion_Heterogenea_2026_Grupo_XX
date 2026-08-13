@@ -4,27 +4,37 @@ from operacion_matriz import Operacion
 
 class determinante_matriz(Operacion):
     """
-    Clase para calcular el determinante de una matriz.
+    Operación para calcular el determinante de las matrices A y B.
     """
 
     def Compute(self):
         """
-        Calcula el determinante de la matriz.
+        Calcula el determinante para la matriz A y la matriz B.
+
+        - Se hace una verificación para asegurarse de que la matriz sea cuadrada antes de calcular su determinante. 
+        - Si la matriz no es cuadrada, se devuelve un mensaje de error correspondiente.
+        - En caso de que la matriz sea cuadrada, se utiliza la función np.linalg.det() para calcular su determinante.
         """
-        result_det = {}
+        # Matrices A y B
+        A = self.matrices["A"]
+        B = self.matrices["B"]
 
-        # Recorrer cada matriz en el diccionario de matrices
-        for index, matrix in self.matrices.items():
-            
-            matrix = np.asarray(matrix)
-
-            # Verificar si la matriz es cuadrada
-            if matrix.ndim != 2 or matrix.shape[0] != matrix.shape[1]:
-                result_det[index] = (f"La matriz {index} debe ser cuadrada para calcular su determinante.")
-                continue
-
-            # Calcular el determinante de la matriz
-            result_det[index] = round(np.linalg.det(matrix), 10)
+        # Condición Matriz A
+        if A.ndim == 2 and A.shape[0] == A.shape[1]:
+            # Calcula el determinante de la matriz A
+            det_A = np.linalg.det(A)
         
-        return result_det
+        else:
+            det_A = "La matriz A no es cuadrada, no se puede calcular su determinante."
+            
+
+        # Condición Matriz B
+        if B.ndim == 2 and B.shape[0] == B.shape[1]:
+            # Calcula el determinante de la matriz B
+            det_B = np.linalg.det(B) 
+            
+        else:
+            det_B = "La matriz B no es cuadrada, no se puede calcular su determinante."
+            
+        return det_A, det_B
             
