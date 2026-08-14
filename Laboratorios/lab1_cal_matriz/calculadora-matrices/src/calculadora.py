@@ -1,19 +1,25 @@
+from suma_matriz import suma_matriz
+from multiplicacion_matriz import multiplicacion_matriz
+from inversa_matriz import inversa_matriz
+from determinante_matriz import determinante_matriz
 
-
-class Aplicacion():
-    """Clase que define la aplicación para calcular matrices"""
+class Calculadora:
     def __init__(self):
-        """Se recibe el diccionario de operaciones, se inicializa vacío"""
-        self.diccionario = {}
-    
-    def registrar_operacion(self, nombre, operacion):
-        """Es el metodo para registrar una operacion en el diccionario"""
-        self.diccionario[nombre] = operacion
-    
-    def obtener_operacion(self, nombre):
-        """Es el metodo que obtiene la operación del diccionario"""
-        return self.diccionario.get(nombre)
-    
-    def obtener_operaciones(self):
-        """Este método obtiene todas las operaciones del diccionario, es un recorrido completo"""
-        return self.diccionario.keys()
+        """Inicializa el diccionario de operaciones disponibles."""
+        self.operaciones = {
+            "suma": suma_matriz,
+            "multiplicacion": multiplicacion_matriz,
+            "inversa": inversa_matriz,
+            "determinante": determinante_matriz
+        }
+
+    def calcular(self, nombre_op, Matriz_A, Matriz_B):
+        """Realiza la operación especificada en las matrices."""
+        if nombre_op not in self.operaciones:
+            return "No es posible hacer la operacion"
+        else:
+            op = self.operaciones[nombre_op]()
+            op.SetMatrix("A", Matriz_A)
+            op.SetMatrix("B", Matriz_B)
+
+            return op.Compute()
