@@ -40,10 +40,39 @@ def determinante():
 
 @app.command()
 def calculadora():
-    """Muestra las operaciones disponibles en la calculadora de matrices."""
-    operaciones = calculadora_app.operaciones
-    for operacion in operaciones:
-        typer.echo(f"Operación: {operacion}")
+    """Muestra el menú interactivo de la calculadora de matrices."""
+    continuar = True
+    while(continuar):
+        
+        typer.echo("Calculadora de matrices")
+        typer.echo("1. Suma")
+        typer.echo("2. Multiplicación")
+        typer.echo("3. Inversa")
+        typer.echo("4. Determinante")
+        
+        opcion = typer.prompt("Seleccione una operación")
+        
+        opciones = {
+            "1": "suma",
+            "2": "multiplicacion",
+            "3": "inversa",
+            "4": "determinante"
+        }
+        
+        if opcion not in opciones:
+            typer.echo("Error: Seleccione una opción válida.")
+            return
+        
+        nombre_operacion = opciones[opcion]
+        matrices = carga_matrices()
+        resultado = calculadora_app.calcular(nombre_operacion, matrices["matrixA"], matrices["matrixB"])
+        
+        typer.echo(f"Resultado de {nombre_operacion}:")
+        typer.echo(resultado)
+        
+        respuesta = typer.prompt("¿Desea realizar otra operación? (s/n)")
+        if respuesta.lower() == "n":
+            continuar = False
 
 if __name__ == "__main__":
     app()
