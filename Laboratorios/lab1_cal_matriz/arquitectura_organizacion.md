@@ -36,6 +36,7 @@ Github/
             │   ├── inversa_matriz.py
             │   ├── determinante_matriz.py
             │   ├── json_carga.py
+            │   ├── matrices_carga.py
             │   └── calculadora.py
             ├── data/
             │   └── matrices.json
@@ -80,11 +81,11 @@ Todas las operaciones concretas heredan de esta clase.
 
 ### 4.3 Registro de operaciones — `calculadora.py`
 
-Contiene la clase `Aplicación`, que almacena en un diccionario las operaciones soportadas. Esto permite agregar o retirar operaciones sin modificar el flujo principal.
+Contiene la clase `calculadora_app`, que almacena en un diccionario las operaciones soportadas. Esto permite agregar o retirar operaciones sin modificar el flujo principal.
 
 ### 4.4 Punto de entrada — `main_matriz.py`
 
-Instancia los módulos, registra las operaciones en la `Aplicación` y expone los comandos de Typer al usuario.
+Instancia los módulos, registra las operaciones en la `Calculadora` y expone los comandos de Typer al usuario.
 
 ### 4.5 Datos de entrada — `matrices.json`
 
@@ -101,7 +102,7 @@ flowchart TD
     subgraph Fase_interfaz["Fase de interfaz"]
         subgraph Tipos_de_entrada["Tipos de entrada"]
             direction TD
-            A[Matrices JSON] --> B[JSON carga]
+            A[Matrices JSON] --> B[JSON carga] --> K[matrices_carga]
         end
 
         C[Typer CLI] --> D[Main]
@@ -132,7 +133,7 @@ flowchart TD
 ```
 
 - **Interfaz:** la clase abstracta `Operación` define el contrato que toda operación debe cumplir.
-- **Adaptador:** la clase `Aplicación` adapta las operaciones registradas para que el CLI las invoque de forma uniforme sin conocer los detalles internos de cada una.
+- **Adaptador:** la clase `calculadora-app` adapta las operaciones registradas para que el CLI las invoque de forma uniforme sin conocer los detalles internos de cada una.
 
 ---
 
@@ -149,11 +150,12 @@ main_matriz.py
   │     └── determinante_matriz.py
   │           └── operacion_matriz.py (clase padre)
   ├── matrices.json (datos de entrada)
-  ├── json_carga.py
+  ├── matrices_carga.py
+  │      └──json_carga.py
   └── Typer (librería CLI)
 ```
 
-La dependencia fluye de arriba hacia abajo: `main` conoce a `Aplicación`, `Aplicación` conoce a las operaciones concretas, y todas dependen de la interfaz `Operación`. Ningún módulo de operación conoce al CLI ni a `main`.
+La dependencia fluye de arriba hacia abajo: `main` conoce a `calculadora`, `calculadora` conoce a las operaciones concretas, y todas dependen de la interfaz `Operación`. Ningún módulo de operación conoce al CLI ni a `main`.
 
 ### 6.2 Orden de desarrollo sugerido
 
@@ -177,7 +179,6 @@ La aplicación expone los siguientes comandos. Se espera que la interacción sea
 | `multiplicar` | Multiplica las dos matrices cargadas |
 | `inversa` | Calcula la inversa de la matriz seleccionada |
 | `determinante` | Calcula el determinante de la matriz seleccionada |
-| `calculadora` | Muestra las operaciones soportadas por la aplicación |
 
 Cada comando debe indicar claramente qué matrices utiliza y presentar el resultado en un formato legible.
 
@@ -207,8 +208,29 @@ Guía paso a paso para instalar y configurar Python UV. Cubre los requisitos pre
 
 **Guia_UV:** https://github.com/Ronald-exe/Computacion_Heterogenea_2026_Grupo_XX/blob/main/Laboratorios/lab1_cal_matriz/calculadora-matrices/docs/guia_uv.md
 
+
 ---
-## 9. Convenciones de Código
+## 9. Roles y Responsabilidades
+
+### Desarrollador
+* **Ambiente de trabajo:** Encargado de configurar y mantener el entorno necesario para cumplir con las matrices de trabajo.
+* **Resolución de problemas:** Propone e implementa soluciones en términos de programación, diseño, conexiones y arquitectura de software.
+* **Flujo de trabajo en Git:** Responsable del desarrollo bajo los estándares de Git, gestionando la creación e integración de ramas tipo `feature/` y `hotfix/`.
+
+### Revisor
+* **Control de calidad:** Encargado de supervisar el funcionamiento adecuado del programa, la correcta integración de módulos y la coherencia del esquema completo del proyecto.
+* **Gestión de Pull Requests:** Responsable de revisar, probar y aceptar los *Pull Requests* dirigidos a la rama `develop`, ejecutando los *merges* correspondientes.
+* **Mantenimiento del repositorio:** Encargado de eliminar ramas obsoletas tras su integración, así como supervisar el manejo de ramas de preparación (`release/`) y correcciones puntuales (`hotfix/`).
+
+### Líder de Proyecto
+* **Gestión y estrategia:** Encargado de la organización general del proyecto, asignación de tareas, definición de estándares técnicos y planificación de estrategias.
+* **Soporte transversal:** Brinda asistencia y guía técnica a los demás integrantes del equipo en cualquiera de las fases del desarrollo.
+* **Gestión de versiones (Releases):** Es la figura encargada de realizar los *Pull Requests* finales hacia la rama `main` para generar las versiones oficiales del sistema.
+
+
+
+---
+## 10. Convenciones de Código
 
 | Aspecto | Convención |
 |---|---|
