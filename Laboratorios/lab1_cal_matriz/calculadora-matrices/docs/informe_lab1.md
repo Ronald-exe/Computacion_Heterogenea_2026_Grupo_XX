@@ -170,3 +170,12 @@ Como se ve en la siguiente imagen:
 ![Menú cíclico](./img/img_3.jpeg)
 
 Al momento de usar el comando de calculadora se despliega un menú cíclico que le permite hacer operaciones más fácilmente, sin la necesidad de escribir nuevamente el comando, simplemente utilizando el número pertinente a la operación (Keys).
+
+## Uso de IA
+- Ronald: https://claude.ai/share/9e95b591-7a2a-4561-9fed-3305453bdf8c
+
+- Fabian: https://chatgpt.com/share/6a7ca294-396c-83e8-a5c3-1333546fd2c4
+
+- Katherine: https://claude.ai/share/5f50a9a6-86e7-4efa-adaa-bb053100fd29
+
+- Keylor: No utilizo
