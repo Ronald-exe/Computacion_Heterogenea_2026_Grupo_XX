@@ -2,7 +2,7 @@
 
 ## 1. Descripción General
 
-La Calculadora de Matrices es una aplicación de línea de comandos desarrollada en Python que realiza operaciones aritméticas sobre matrices 2×2 definidas en un archivo JSON. La aplicación sigue el patrón **Interfaz-Adaptador**: una clase padre abstracta (`Operación`) define los métodos `SetMatrix`, `Compute` y `Clear`, y cada operación concreta (suma, multiplicación, inversa, determinante) hereda de ella. Una clase `Aplicación` registra las operaciones soportadas en un diccionario, y la interfaz de usuario se expone mediante **Typer**.
+La Calculadora de Matrices es una aplicación de línea de comandos desarrollada en Python que realiza operaciones aritméticas sobre matrices 2×2 definidas en un archivo JSON. La aplicación sigue el patrón **Interfaz-Adaptador**: una clase padre abstracta (`Operación`) define los métodos `SetMatrix`, `Compute` y `Clear`, y cada operación concreta (suma, multiplicación, inversa, determinante) hereda de ella. Una clase `calcualdora` registra las operaciones soportadas en un diccionario, y la interfaz de usuario se expone mediante **Typer**.
 
 Este documento describe la estrategia de organización del proyecto y sirve como referencia para que todos los integrantes del equipo trabajen bajo las mismas convenciones.
 
