@@ -1,4 +1,20 @@
-# Calculadora Matricial CLI
+# Calculadora Matricial - Laboratorio 1
+## Profesor
+
+| Rol | Nombre |
+|---|---|
+| Profesor | Luis Gerardo León Vega |
+
+## Integrantes
+
+| Nombre | Carnet | Rol |
+|---|---|---|
+| Ronald Duarte Barrantes | 2021004089 | Líder de equipo |
+| Katherine Salazar Martínez | 2014160591 | Desarrolladora |
+| Fabián Chacón Solano | 2018135154 | Desarrollador |
+| Keylor Muñoz Soto | 2020100689| Revisor |
+
+---
 
 ## Descripción del Proyecto
 
@@ -42,36 +58,115 @@ Siga estos pasos para configurar el entorno de ejecución localmente:
 * **Control de versiones:** Git
 
 ## Instrucciones de Utilización
-Para la utilziacion de este progama se tiene las siguientes ejemplos.
 
-![Diagrama de Arquitectura](./img/img_1.jpeg)
+### Pasos para la Configuración
 
-Para acceder al menu de la calculadora mediante el typer, es necesario estar en la carpeta del archivo y utilizar el siguiente comando: uv run main_matriz.py --help con ese comando se desplegara el anterior comun, en donde notara las operaciones que soporta la calculadora, las cuales son: sumar, multiplicar, inversa y determinate, para usar estas operaciones desde terminal, debe emplear el siguiente comando:
+#### Guía de usuario
+
+A continuación se describirá paso a paso cómo utilizar la calculadora de matrices.
+
+Es importante mencionar que toda la guía descrita a continuación se llevará a cabo desde una terminal, ya sea de _Visual Studio Code_ o la terminal de _Linux_.
+
+#### Sistema y entorno
+
+Para poder ejecutar con éxito se requiere tener instalado lo siguiente:
+
+| Sistema Operativo | Sistema de Construcción |
+| --- | --- |
+| Linux | Python UV |
+
+La guía para instalar el entorno Python UV se puede acceder desde el siguiente [enlace](enlace).
+
+#### Pasos a seguir
+
+Una vez tenido instalado Linux como sistema operativo en su PC, y haber hecho la instalación del sistema de construcción, se deben seguir los siguientes pasos:
+
+1. Clonar este repositorio al local.
+
+2. Revisa la estructura del repositorio que se descargó a tu unidad local de acuerdo con la siguiente:
+
+    <!-- Agregar estructura final del repo -->
+
+3. Activa el entorno __uv__ según se describió en la [guia_uv]()
+
+4. Una vez activado el entorno, ve a esta ruta para poder utilizar la calculadora:
+
+```bash
+    # Ruta de la calculadora en el repositorio
+    cd Laboratorios/lab1_cal_matriz/calculadora-matrices
+```
+    Verifica que la terminal esté apuntando a esta ruta, de lo contrario habrán errores de dirección.
+
+    En la terminal debería verse algo así después de tu usuario:
+
+tu_usuario@tu_usuario:~/ruta_clonar_repo/Computacion_Heterogenea_2026_Grupo_XX/Laboratorios/lab1_cal_matriz/calculadora-matrices$
+
+5. Correr script para iniciar la calculadora, y ver el menú de operaciones.
+
+    El script que se debe correr para iniciar la calculadora es el ``main_matrix.py``.
+
+    Para correr el ``main_matrix.py`` se puede utilizar la siguiente instrucción:
+
+```bash
+    # Correr con uv
+    uv run main_matrix.py
+
+    # Entorno (.venv) activo con source .venv/bin/activate
+    python src/main_matrix.py
+```
+
+    Si vas a utilizar la segunda instrucción y te aparece un error con ``python``, cambia ``python`` por ``python3``.
+
+    Al ejecutarse el main, en la terminal se desplegará el siguiente menú:
+
+```bash
+    Calculadora de matrices
+    1. Suma
+    2. Multiplicación
+    3. Inversa
+    4. Determinante
+    Seleccione una operación:
+```
+    Al ver el menú, indica la operación ingresando el número asignado, es decir que para cada operación el número es:
+
+    - __Suma: 1__
+    - __Multiplicación: 2__
+    - __Inversa: 3__
+    - __Determinante: 4__
+
+__Importante: Solamente se puede realizar una operación a la vez.__
+
+
+Después de ingresar la operación, se mostrará el resultado y se preguntará si se quiere realizar otro cálculo o no; en caso de no querer hacer otro cálculo, se saldrá de inmediato del menú.
+
+
+---
+
+### Ejemplos
+
+Para la utilización de este programa se tienen los siguientes ejemplos.
+
+![Menú de ayuda](./img/img_1.jpeg)
+
+Para acceder al menú de la calculadora mediante Typer, es necesario estar en la carpeta del archivo y utilizar el siguiente comando: `uv run main_matriz.py --help`. Con ese comando se desplegará el anterior comando, en donde notará las operaciones que soporta la calculadora, las cuales son: sumar, multiplicar, inversa y determinante. Para usar estas operaciones desde la terminal, debe emplear los siguientes comandos:
 
 - uv run main_matriz.py sumar
 - uv run main_matriz.py multiplicar
 - uv run main_matriz.py inversa
 - uv run main_matriz.py determinante
 
-Para hacer porbar matrices distintas se necesita hacer un cambio en el archivo matrices.json, pero la utilizacion de estas funciones se ve acontinuacion:
+Para probar matrices distintas se necesita hacer un cambio en el archivo `matrices.json`, pero la utilización de estas funciones se ve a continuación:
 
-![Diagrama de Arquitectura](./img/img_2.jpeg)
+![Ejemplo de operaciones](./img/img_2.jpeg)
 
-En este apartado se denotan la utilizacion de los comandos necesarios para hacer las operaciones desde terminal sin necesidad de utilizar un menu, en caso de que se desee hacer una operacion de manera mas rapida para comprabar un resultado.
+En este apartado se denota la utilización de los comandos necesarios para hacer las operaciones desde la terminal sin necesidad de utilizar un menú, en caso de que se desee hacer una operación de manera más rápida para comprobar un resultado.
 
-Pero si la idea es hacer varias operaciones, utlice la siguiente operando
+Pero si la idea es hacer varias operaciones, utilice el siguiente comando:
 
 - uv run main_matriz.py calculadora
 
-Como se ve en el siguiente imagen: 
+Como se ve en la siguiente imagen: 
 
-![Diagrama de Arquitectura](./img/img_3.jpeg)
+![Menú cíclico](./img/img_3.jpeg)
 
-Al momento de usar el comando de calculadora se despliega un menu ciclico que le permite hacer operaciones mas facilmente, sin la necesidad de escribir nuevamente el comando, simplemente utilizando los numero pertinente a la operacion (Keys)
-
-### Pasos para la Configuración
-
-1. **Clonar el repositorio:**
-   ```bash
-   git clone [https://github.com/tu-usuario/nombre-del-repositorio.git](https://github.com/tu-usuario/nombre-del-repositorio.git)
-   cd nombre-del-repositorio
+Al momento de usar el comando de calculadora se despliega un menú cíclico que le permite hacer operaciones más fácilmente, sin la necesidad de escribir nuevamente el comando, simplemente utilizando el número pertinente a la operación (Keys).
