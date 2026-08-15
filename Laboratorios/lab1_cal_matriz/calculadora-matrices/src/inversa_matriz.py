@@ -24,7 +24,7 @@ class inversa_matriz(Operacion):
         # Condición Matriz A
         if A.ndim == 2 and A.shape[0] == A.shape[1]:
             try:
-                inv_A = np.linalg.inv(A)
+                inv_A = f"Inversa de A:\n{np.linalg.inv(A)}"
             except np.linalg.LinAlgError:
                 inv_A = "La matriz A no es invertible."
         else:   
@@ -34,7 +34,7 @@ class inversa_matriz(Operacion):
         # Condición Matriz B
         if B.ndim == 2 and B.shape[0] == B.shape[1]:
             try:
-                inv_B = np.linalg.inv(B)
+                inv_B = f"Inversa de B:\n{np.linalg.inv(B)}"
             except np.linalg.LinAlgError:
                 inv_B = "La matriz B no es invertible."
         else:   

@@ -22,7 +22,7 @@ class determinante_matriz(Operacion):
         # Condición Matriz A
         if A.ndim == 2 and A.shape[0] == A.shape[1]:
             # Calcula el determinante de la matriz A
-            det_A = np.linalg.det(A)
+            det_A = f"Determinante de A: {np.linalg.det(A)}"
         
         else:
             det_A = "La matriz A no es cuadrada, no se puede calcular su determinante."
@@ -31,7 +31,7 @@ class determinante_matriz(Operacion):
         # Condición Matriz B
         if B.ndim == 2 and B.shape[0] == B.shape[1]:
             # Calcula el determinante de la matriz B
-            det_B = np.linalg.det(B) 
+            det_B = f"Determinante de B: {np.linalg.det(B)}"
             
         else:
             det_B = "La matriz B no es cuadrada, no se puede calcular su determinante."
