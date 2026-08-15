@@ -15,6 +15,21 @@ Este documento describe la estrategia de organización del proyecto y sirve como
 | **Python UV** | Gestión de entorno virtual y dependencias |
 | **Typer** | Framework CLI para definir comandos de usuario |
 | **Git / GitHub** | Control de versiones y colaboración |
+
+### Instalación del entorno (Linux)
+
+```bash
+# 1. Instalar UV
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# 2. Crear el proyecto e instalar dependencias
+uv init calculadora-matrices
+cd calculadora-matrices
+uv add typer
+```
+
+> Cada integrante debe tener el entorno funcional antes de comenzar a contribuir código.
+
 ---
 
 ## 3. Estructura de Carpetas
@@ -79,7 +94,7 @@ Todas las operaciones concretas heredan de esta clase.
 | `inversa_matriz.py` | `inversa_matriz()` | Cálculo de la matriz inversa |
 | `determinante_matriz.py` | `determinante_matriz()` | Cálculo del determinante escalar |
 
-### 4.3 Registro de operaciones — `calculadora.py`
+### 4.3 Registro de operaciones — `diccionario_app_matriz.py`
 
 Contiene la clase `calculadora_app`, que almacena en un diccionario las operaciones soportadas. Esto permite agregar o retirar operaciones sin modificar el flujo principal.
 
@@ -143,7 +158,7 @@ flowchart TD
 
 ```
 main_matriz.py
-  ├── Calculadora.py (Aplicación)
+  ├── diccionario_app_matriz.py (Aplicación)
   │     ├── suma_matriz.py
   │     ├── multiplicacion_matriz.py
   │     ├── inversa_matriz.py
@@ -162,7 +177,7 @@ La dependencia fluye de arriba hacia abajo: `main` conoce a `calculadora`, `calc
 1. Definir el esquema de `matrices.json` con datos de prueba.
 2. Implementar `operacion_matriz.py` (clase abstracta).
 3. Implementar las operaciones concretas (suma, multiplicación, inversa, determinante).
-4. Implementar `calculadora.py` para registrar las operaciones.
+4. Implementar `diccionario_app_matriz.py` para registrar las operaciones.
 5. Implementar `main_matriz.py` con los comandos de Typer.
 6. Escribir pruebas unitarias y de casos esquina.
 7. Revisión final e integración.
